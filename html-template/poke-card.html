@@ -49,7 +49,8 @@
     constructor () {
       super()
       const shadow = this.attachShadow({mode: 'open'})
-      const currentDocument = document.currentScript.ownerDocument
+      const currentScript = document._currentScript || document.currentScript
+      const currentDocument = currentScript.ownerDocument
       const pokeCardTemplate = currentDocument.getElementById('poke-card-template')
       shadow.appendChild(pokeCardTemplate.content.cloneNode(true))
     }
