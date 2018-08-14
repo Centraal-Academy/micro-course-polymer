@@ -1,0 +1,14 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<dom-module id="poke-label">
+  <template>
+    <span>Pokelabel in the shadows</span>
+  </template>
+  <script>
+    class PokeLabel extends Polymer.Element {
+      static get is() {
+        return 'poke-label'
+      }
+    }
+    customElements.define(PokeLabel.is, PokeLabel)
+  </script>
+</dom-module>

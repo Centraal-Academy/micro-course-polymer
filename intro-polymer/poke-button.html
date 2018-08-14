@@ -1,0 +1,14 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<dom-module id="poke-button">
+  <template>
+    <button>I am a PokeButton</button>
+  </template>
+  <script>
+    class PokeButton extends Polymer.Element {
+      static get is() {
+        return 'poke-button'
+      }
+    }
+    customElements.define(PokeButton.is, PokeButton)
+  </script>
+</dom-module>
