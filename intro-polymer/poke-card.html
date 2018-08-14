@@ -8,14 +8,19 @@
         display: block;
       }
     </style>
-    <poke-button></poke-button>
-    <poke-label></poke-label>
+    <poke-button name="[[name]]"></poke-button>
+    <poke-label name="[[name]]"></poke-label>
   </template>
   <script>
     class PokeCard extends Polymer.Element {
-      constructor() {
-      super();
-    }
+      static get properties() {
+        return {
+          name: {
+            type: String,
+            reflectToAttribute: true
+          }
+        }
+      }
       static get is() {
         return 'poke-card'
       }
