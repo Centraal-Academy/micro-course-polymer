@@ -1,0 +1,20 @@
+{
+  "name": "pokedex",
+  "homepage": "https://github.com/Centraal-Academy/micro-course-polymer",
+  "authors": [
+    "DezkaReid <elmaildeldezkareid@gmail.com>"
+  ],
+  "description": "pokeder in polymer",
+  "main": "",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^2.0.0"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "pokedex",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "browser-sync start --server --files \"./*.html\"" 
+  },
+  "devDependencies": {
+    "browser-sync": "^2.24.6"
+  }
+}
