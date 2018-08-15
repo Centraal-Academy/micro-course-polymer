@@ -1,7 +1,20 @@
 <link rel="import" href="/bower_components/polymer/polymer-element.html">
 <dom-module id="poke-label">
   <template>
-    <span>[[name]]</span>
+    <style>
+      :host {
+        display: block;
+        width: 100%;
+      }
+      .label {
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        display: block;
+        padding: 0.5rem 0;
+        text-align: center;
+      }
+    </style>
+    <span class="label">[[name]]</span>
   </template>
   <script>
     class PokeLabel extends Polymer.Element {
