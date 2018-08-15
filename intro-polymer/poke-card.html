@@ -7,9 +7,21 @@
       :host {
         display: block;
       }
+      .container {
+        background-color: bisque;
+        max-width: 160px;
+        min-height: 160px;
+        position: relative;
+      }
+      poke-label {
+        position: absolute;
+        bottom: 0;
+      }
     </style>
-    <poke-button name="[[name]]"></poke-button>
-    <poke-label name="[[name]]"></poke-label>
+    <div class="container">
+      <poke-button name="[[name]]"></poke-button>
+      <poke-label name="[[name]]"></poke-label>
+    </div>
   </template>
   <script>
     class PokeCard extends Polymer.Element {
