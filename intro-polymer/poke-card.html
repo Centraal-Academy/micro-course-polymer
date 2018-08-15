@@ -5,17 +5,27 @@
   <template>
     <style>
       :host {
-        display: block;
+        display: inline-block;
+        border-width: 1px;
+        border-color: black;
+        border-style: solid;
       }
       .container {
         background-color: bisque;
-        max-width: 160px;
+        min-width: 160px;
         min-height: 160px;
         position: relative;
       }
       poke-label {
         position: absolute;
         bottom: 0;
+      }
+      poke-button {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
       }
     </style>
     <div class="container">
