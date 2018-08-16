@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "browser-sync start --server --files \"./*.html\"" 
+    "dev": "browser-sync start --server --files \"./components/*.html\"" 
   },
   "devDependencies": {
     "browser-sync": "^2.24.6"
