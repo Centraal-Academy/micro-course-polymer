@@ -31,27 +31,9 @@
       static get properties() {
         return {
           pokemon: {
-            type: Object,
-            readOnly: false,
-            notify: true,
-            observer: '_changedName'
+            type: Object
           }
         }
-      }
-      
-      ready () {
-        super.ready()
-        setTimeout(() => {
-          this.pokemon = {
-            name: 'Ivysaur',
-            icon: 'https://vignette.wikia.nocookie.net/virtuadopt/images/8/86/Ivysaur.png/revision/latest?cb=20111216004637',
-            type: 'poison'
-          }
-        }, 2000)
-      }
-
-      _changedName () {
-        console.log('Name pokemon changed', this.pokemon)
       }
 
       static get is() {
