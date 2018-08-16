@@ -9,8 +9,8 @@
       }
     </style>
     <h2>Pokedex oficial de polymer</h2>
-    <template is="dom-repeat" items="{{pokemons}}">
-      <poke-card pokemon="[[item]]" on-click="_capture"></poke-card>
+    <template is="dom-repeat" items="{{pokemons}}" as="pokemon">
+      <poke-card pokemon="[[pokemon]]" on-click="_capture"></poke-card>
     </template>
   </template>
   <script>
@@ -45,7 +45,7 @@
           /*const index = event.model.index
           const path = 'pokemons.' + index + '.captured'
           this.set(path, true)*/
-          event.model.set('item.captured', true);
+          event.model.set('pokemon.captured', true);
         }
       }
       customElements.define(PokeList.is, PokeList)
