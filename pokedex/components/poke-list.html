@@ -9,7 +9,7 @@
       }
     </style>
     <h2>Pokedex oficial de polymer</h2>
-    <template is="dom-repeat" items="{{pokemons}}" as="pokemon">
+    <template is="dom-repeat" items="{{pokemons}}" as="pokemon" filter="{{_pokemonFilter(selected)}}">
       <poke-card pokemon="[[pokemon]]" on-click="_capture"></poke-card>
     </template>
   </template>
@@ -35,6 +35,10 @@
                   captured: false
                 }
               ]
+            },
+            selected: {
+              type: Boolean,
+              value: false
             }
           }
         }
@@ -46,7 +50,18 @@
           const path = 'pokemons.' + index + '.captured'
           this.set(path, true)*/
           event.model.set('pokemon.captured', true);
+          this.set('selected', true)
         }
+
+        _pokemonFilter (selected) {
+          if (!selected) {
+            return null
+          }
+          return function (pokemon) {
+            return !pokemon.captured
+          }
+        }
+
       }
       customElements.define(PokeList.is, PokeList)
     </script>
