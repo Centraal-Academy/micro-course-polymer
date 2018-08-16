@@ -1,4 +1,5 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/polymer/lib/elements/dom-if.html">
 <link rel="import" href="poke-button.html">
 <link rel="import" href="poke-label.html">
 <dom-module id="poke-card">
@@ -32,6 +33,12 @@
       <poke-button pokemon="{{pokemon}}"></poke-button>
       <poke-label name="[[pokemon.name]]"></poke-label>
     </div>
+    <template is="dom-if" if="{{pokemon.captured}}">
+      <span>[[winBattles]]</span>
+    </template>
+    <template is="dom-if" if="{{!pokemon.captured}}">
+        <span>Wild Pokemon</span>
+      </template>
   </template>
   <script>
     class PokeCard extends Polymer.Element {
@@ -39,9 +46,20 @@
         return {
           pokemon: {
             type: Object
+          },
+          winBattles: {
+            type: String,
+            computed: "_calculateWins(pokemon)"
           }
         }
       }
+
+      _calculateWins (pokemon) {
+        const battles = pokemon.battles
+        const winBattles = battles.filter((result) => result=== 'w')
+        return winBattles.length + "/" + battles.length
+      }
+
       static get is() {
         return 'poke-card'
       }
