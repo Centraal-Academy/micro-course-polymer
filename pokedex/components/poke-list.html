@@ -9,7 +9,11 @@
       }
     </style>
     <h2>Pokedex oficial de polymer</h2>
-    <template is="dom-repeat" items="{{pokemons}}" as="pokemon" filter="{{_pokemonFilter(selected)}}">
+    <template is="dom-repeat"
+      items="{{pokemons}}"
+      as="pokemon"
+      filter="_pokemonFilter"
+      observe="captured pokemon.captured">
       <poke-card pokemon="[[pokemon]]" on-click="_capture"></poke-card>
     </template>
   </template>
@@ -49,17 +53,11 @@
           /*const index = event.model.index
           const path = 'pokemons.' + index + '.captured'
           this.set(path, true)*/
-          event.model.set('pokemon.captured', true);
-          this.set('selected', true)
+          event.model.set('pokemon.captured', true)
         }
 
-        _pokemonFilter (selected) {
-          if (!selected) {
-            return null
-          }
-          return function (pokemon) {
-            return !pokemon.captured
-          }
+        _pokemonFilter (pokemon) {
+          return !pokemon.captured
         }
 
       }
