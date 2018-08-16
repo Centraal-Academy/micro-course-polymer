@@ -1,0 +1,38 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="poke-card.html">
+<dom-module id="poke-list">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Pokedex oficial de polymer</h2>
+    <template is="dom-repeat" items="{{pokemons}}">
+      <poke-card pokemon="[[item]]"></poke-card>
+    </template>
+  </template>
+  <script>
+      class PokeList extends Polymer.Element {
+        static get properties () {
+          return {
+            pokemons: {
+              type: Array,
+              value: [
+                {
+                  name:"Bulbasaur",
+                  type: "plant",
+                  icon:"http://pixelartmaker.com/art/3f100623ee8b17c.png"
+                }
+              ]
+            }
+          }
+        }
+        static get is () {
+          return 'poke-list'
+        }
+      }
+      customElements.define(PokeList.is, PokeList)
+    </script>
+</dom-module>
