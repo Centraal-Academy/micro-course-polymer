@@ -1,0 +1,31 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="poke-list.html">
+<link rel="import" href="poke-search.html">
+<dom-module id="poke-app">
+  <template>
+    <poke-search on-search="_search"></poke-search>
+    <poke-list filter="[[search]]"></poke-list>
+  </template>
+  <script>
+    class PokeApp extends Polymer.Element {
+      static get properties () {
+        return {
+          search: {
+            type: String,
+            notify: true,
+            value: ''
+          }
+        }
+      }
+      static get is () {
+        return 'poke-app'
+      }
+
+      _search (event) {
+        event.stopPropagation()
+        this.set('search', event.detail.search)
+      }
+    }
+    customElements.define(PokeApp.is, PokeApp)
+  </script>
+</dom-module>
