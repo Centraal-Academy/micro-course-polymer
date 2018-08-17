@@ -1,0 +1,25 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<dom-module id="poke-search">
+  <template>
+    <style>
+      :host {
+        display: block
+      }
+    </style>
+    <input id="pokemon-name" placeholder="pikachu" on-input="_changeSearch">
+  </template>
+  <script>
+    class PokeSearch extends Polymer.Element {
+      static get is () {
+        return 'poke-search'
+      }
+
+      _changeSearch (event) {
+        const searchValue = event.target.value
+        const newEvent = new CustomEvent('search', { detail: { search: searchValue } })
+        this.dispatchEvent(newEvent)
+      }
+    }
+    customElements.define(PokeSearch.is, PokeSearch)
+  </script>
+</dom-module>
