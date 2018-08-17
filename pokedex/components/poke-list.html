@@ -12,8 +12,7 @@
     <template is="dom-repeat"
       items="{{pokemons}}"
       as="pokemon"
-      filter="_pokemonFilter"
-      observe="captured pokemon.captured">
+      filter="{{_pokemonFilter(filter)}}">
       <poke-card pokemon="[[pokemon]]" on-click="_capture"></poke-card>
     </template>
   </template>
@@ -40,9 +39,8 @@
                 }
               ]
             },
-            selected: {
-              type: Boolean,
-              value: false
+            filter: {
+              type: String
             }
           }
         }
@@ -56,8 +54,13 @@
           event.model.set('pokemon.captured', true)
         }
 
-        _pokemonFilter (pokemon) {
-          return !pokemon.captured
+        _pokemonFilter (filter) {
+          if (!filter) {
+            return null
+          }
+          return function (pokemon) {
+            return pokemon.name.indexOf(filter) > -1
+          }
         }
 
       }
