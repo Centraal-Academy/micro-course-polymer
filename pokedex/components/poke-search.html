@@ -6,7 +6,10 @@
         display: block
       }
     </style>
+    <label for="pokemon-name">Search Pokemon:</label>
     <input id="pokemon-name" placeholder="pikachu" on-input="_changeSearch">
+    <label for="pokemon-savage">Only Savage:</label>
+    <input type="checkbox" name="pokemon-savage" id="pokemon-savage">
   </template>
   <script>
     class PokeSearch extends Polymer.Element {
