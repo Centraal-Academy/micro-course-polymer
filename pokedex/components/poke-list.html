@@ -18,6 +18,11 @@
   </template>
   <script>
       class PokeList extends Polymer.Element {
+        ready () {
+          super.ready()
+          this._loadPokemons()
+        }
+
         static get properties () {
           return {
             pokemons: {
@@ -29,6 +34,7 @@
             }
           }
         }
+        
         static get is () {
           return 'poke-list'
         }
@@ -37,6 +43,15 @@
           const path = 'pokemons.' + index + '.captured'
           this.set(path, true)*/
           event.model.set('pokemon.captured', true)
+        }
+
+        _loadPokemons() {
+          fetch('http://localhost:3000/pokemons')
+            .then((response)=> response.json())
+            .then((response) => {
+              this.pokemons = response
+            })
+            .catch(console.error)
         }
 
         _pokemonFilter (filter) {
