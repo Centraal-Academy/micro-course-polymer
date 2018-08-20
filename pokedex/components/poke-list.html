@@ -17,7 +17,10 @@
       on-error="_handleError"
     >
     </iron-ajax>
-    <h2>Pokedex oficial de polymer</h2>
+    <slot name="title">
+      <h2>Pokedex oficial de polymer titulo default</h2>
+    </slot>
+    <slot></slot>
     <template is="dom-repeat"
       items="{{pokemons}}"
       as="pokemon"
