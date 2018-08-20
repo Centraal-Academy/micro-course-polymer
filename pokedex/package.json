@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "browser-sync start --server --files \"./components/*.html\"",
+    "dev": "browser-sync start --server --files \"./components/*.html\" --port 8080",
     "fake:api": "json-server --watch db.json"
   },
   "devDependencies": {
