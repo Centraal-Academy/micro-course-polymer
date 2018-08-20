@@ -1,5 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/polymer/lib/elements/dom-repeat.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="poke-card.html">
 <dom-module id="poke-list">
   <template>
@@ -8,6 +9,14 @@
         display: block;
       }
     </style>
+    <iron-ajax
+      auto
+      url="http://localhost:3000/pokemons"
+      handle-as="json"
+      on-response="_loadPokemons"
+      on-error="_handleError"
+    >
+    </iron-ajax>
     <h2>Pokedex oficial de polymer</h2>
     <template is="dom-repeat"
       items="{{pokemons}}"
@@ -18,11 +27,6 @@
   </template>
   <script>
       class PokeList extends Polymer.Element {
-        ready () {
-          super.ready()
-          this._loadPokemons()
-        }
-
         static get properties () {
           return {
             pokemons: {
@@ -38,6 +42,7 @@
         static get is () {
           return 'poke-list'
         }
+        
         _capture (event) {
           /*const index = event.model.index
           const path = 'pokemons.' + index + '.captured'
@@ -45,13 +50,12 @@
           event.model.set('pokemon.captured', true)
         }
 
-        _loadPokemons() {
-          fetch('http://localhost:3000/pokemons')
-            .then((response)=> response.json())
-            .then((response) => {
-              this.pokemons = response
-            })
-            .catch(console.error)
+        _handleError (event, request) {
+          console.error(request.error)
+        }
+
+        _loadPokemons (event) {
+          this.pokemons = event.detail.response
         }
 
         _pokemonFilter (filter) {
