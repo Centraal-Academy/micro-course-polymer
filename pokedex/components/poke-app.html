@@ -4,7 +4,7 @@
 <dom-module id="poke-app">
   <template>
     <poke-search on-search="_search"></poke-search>
-    <poke-list filter="[[search]]">
+    <poke-list filter="[[search]]" on-pokemons-changed="_pokemonChanged">
       <h2 slot="title" class="title">Pokedex oficial de polymer</h2>
       <h3>Kanto</h3>
     </poke-list>
@@ -20,8 +20,13 @@
           }
         }
       }
+
       static get is () {
         return 'poke-app'
+      }
+
+      _pokemonChanged (event) {
+        console.log(event)
       }
 
       _search (event) {
