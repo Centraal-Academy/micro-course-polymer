@@ -38,7 +38,8 @@
           return {
             pokemons: {
               type: Array,
-              value: []
+              value: [],
+              readOnly: true
             },
             filter: {
               type: String
@@ -62,7 +63,7 @@
         }
 
         _loadPokemons (event) {
-          this.pokemons = event.detail.response
+          this._setPokemons(event.detail.response)
         }
 
         _pokemonFilter (filter) {
