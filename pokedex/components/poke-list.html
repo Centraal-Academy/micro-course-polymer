@@ -20,7 +20,7 @@
       items="{{pokemons}}"
       as="pokemon"
       filter="{{_pokemonFilter(filter)}}">
-      <poke-card pokemon="[[pokemon]]" on-click="_capture"></poke-card>
+      <poke-card pokemon="[[pokemon]]" on-click="_clickHandler"></poke-card>
     </template>
   </template>
   <script>
@@ -28,9 +28,7 @@
         static get properties () {
           return {
             pokemons: {
-              type: Array,
-              value: [],
-              notify: true
+              type: Array
             },
             filter: {
               type: String
@@ -42,11 +40,17 @@
           return 'poke-list'
         }
         
-        _capture (event) {
+        _clickHandler (event) {
           /*const index = event.model.index
           const path = 'pokemons.' + index + '.captured'
-          this.set(path, true)*/
+          this.set(path, true)
+          // other option
           event.model.set('pokemon.captured', true)
+          */
+          const pokemonClick = new CustomEvent('pokemon-click', {
+            detail: event.model
+          })
+          this.dispatchEvent(pokemonClick)
         }
 
         _handleError (event, request) {
