@@ -1,6 +1,5 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/polymer/lib/elements/dom-repeat.html">
-<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 <link rel="import" href="poke-card.html">
 <dom-module id="poke-list">
   <template>
@@ -13,14 +12,6 @@
         font-style: italic;
       }
     </style>
-    <iron-ajax
-      auto
-      url="http://localhost:3000/pokemons"
-      handle-as="json"
-      on-response="_loadPokemons"
-      on-error="_handleError"
-    >
-    </iron-ajax>
     <slot name="title">
       <h2>Pokedex oficial de polymer titulo default</h2>
     </slot>
@@ -39,8 +30,7 @@
             pokemons: {
               type: Array,
               value: [],
-              notify: true,
-              readOnly: true
+              notify: true
             },
             filter: {
               type: String
