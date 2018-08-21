@@ -1,6 +1,7 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="../bower_components/polymer/lib/elements/dom-repeat.html">
 <link rel="import" href="poke-card.html">
+<link rel="import" href="poke-container.html">
 <dom-module id="poke-list">
   <template>
     <style>
@@ -11,6 +12,10 @@
         font-size: 1.2rem;
         font-style: italic;
       }
+
+      poke-container {
+        display: inline-block;
+      }
     </style>
     <slot name="title">
       <h2>Pokedex oficial de polymer titulo default</h2>
@@ -20,7 +25,9 @@
       items="{{pokemons}}"
       as="pokemon"
       filter="{{_pokemonFilter(filter)}}">
-      <poke-card pokemon="[[pokemon]]" on-click="_clickHandler"></poke-card>
+      <poke-container>
+        <poke-card pokemon="[[pokemon]]" on-click="_clickHandler"></poke-card>
+      </poke-container>
     </template>
   </template>
   <script>
