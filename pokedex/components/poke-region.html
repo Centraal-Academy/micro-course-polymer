@@ -16,7 +16,7 @@
       on-error="_handleError"
     >
     </iron-ajax>
-    <poke-list filter="[[filter]]" pokemons="{{ pokemons }}" on-pokemons-changed="_pokemonChanged">
+    <poke-list filter="[[filter]]" pokemons="[[pokemons]]" on-pokemon-click="_capturePokemon">
       <h2 slot="title" class="title">Pokedex oficial de [[region]]</h2>
     </poke-list>
   </template>
@@ -41,8 +41,9 @@
         return 'poke-region'
       }
 
-      _pokemonChanged (event) {
-        console.log(event)
+      _capturePokemon (event) {
+        const model = event.detail
+        model.set('pokemon.captured', true)
       }
 
       _handleError (event, request) {
