@@ -1,0 +1,54 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/neon-animation/web-animations.html">
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../bower_components/iron-form/iron-form.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<dom-module id="poke-form">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <iron-form id="pokeForm" on-iron-form-presubmit="_onSubmit">
+      <form>
+        <paper-input label="Id" name="id" placeholder="100" type="number"></paper-input>
+        <paper-input label="Pokemon's name" name="name" placeholder="Bulbasaur"></paper-input>
+        <paper-input label="Image pokemon" name="icon" placeholder="http://host.com/image.png" type="url"></paper-input>
+        <paper-dropdown-menu label="Pokemon's type" name="type">
+          <paper-listbox slot="dropdown-content" selected="1">
+            <paper-item>plant</paper-item>
+            <paper-item>poison</paper-item>
+          </paper-listbox>
+        </paper-dropdown-menu>
+        <div>
+          <paper-button raised on-click="_submitForm">Guardar</paper-button>
+        </div>
+      </form>
+    </iron-form>
+  </template>
+  <script>
+    class PokeForm extends Polymer.Element {
+      static get is () {
+        return 'poke-form'
+      }
+
+      _onSubmit (event) {
+        event.preventDefault()
+        const ironForm = event.target
+        const pokemon = ironForm.serializeForm()
+        pokemon.battles = []
+        pokemon.captures= false
+        console.log(pokemon)
+      }
+
+      _submitForm () {
+        this.$.pokeForm.submit()
+      }
+    }
+    customElements.define(PokeForm.is, PokeForm)
+  </script>
+</dom-module>
