@@ -18,6 +18,12 @@
         <paper-input label="Id" name="id" placeholder="100" type="number"></paper-input>
         <paper-input label="Pokemon's name" name="name" placeholder="Bulbasaur"></paper-input>
         <paper-input label="Image pokemon" name="icon" placeholder="http://host.com/image.png" type="url"></paper-input>
+        <paper-dropdown-menu label="Region" name="region">
+          <paper-listbox slot="dropdown-content" selected="1">
+            <paper-item>kanto</paper-item>
+            <paper-item>kalos</paper-item>
+          </paper-listbox>
+        </paper-dropdown-menu>
         <paper-dropdown-menu label="Pokemon's type" name="type">
           <paper-listbox slot="dropdown-content" selected="1">
             <paper-item>plant</paper-item>
