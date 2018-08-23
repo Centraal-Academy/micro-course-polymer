@@ -64,6 +64,7 @@
         }
         fetch(url, config)
           .then(response => {
+            this.$.pokeForm.reset()
             console.log(response)
           })
           .catch(error => {
@@ -72,7 +73,7 @@
       }
 
       _submitForm () {
-        this.$.pokeForm.submit()
+        this.shadowRoot.querySelector('#pokeForm').submit()
       }
     }
     customElements.define(PokeForm.is, PokeForm)
