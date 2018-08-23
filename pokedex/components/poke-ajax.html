@@ -48,10 +48,18 @@
       }
 
       _triggerResponse (response) {
+        const onResponse = new CustomEvent('on-response', {
+            detail: response
+          })
+        this.dispatchEvent(onResponse)
         console.log(response)
       }
 
       _triggerError (error) {
+        const onError = new CustomEvent('on-error', {
+            detail: error
+          })
+        this.dispatchEvent(error)
         console.error(error)
       }
     }
