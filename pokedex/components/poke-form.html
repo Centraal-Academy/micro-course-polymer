@@ -48,7 +48,27 @@
         const pokemon = ironForm.serializeForm()
         pokemon.battles = []
         pokemon.captured = false
-        console.log(pokemon)
+        this._savePokemon(pokemon)
+      }
+
+      _savePokemon (pokemon) {
+        const region = pokemon.region
+        delete pokemon.region
+        const url = 'http://localhost:3000/'+region
+        const config =  {
+          method: 'POST',
+          body: JSON.stringify(pokemon),
+          headers:{
+            'Content-Type': 'application/json'
+          }
+        }
+        fetch(url, config)
+          .then(response => {
+            console.log(response)
+          })
+          .catch(error => {
+            console.error(error)
+          })
       }
 
       _submitForm () {
